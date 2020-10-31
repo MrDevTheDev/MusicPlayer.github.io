@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Music Player</title>
+			 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+			 <script src="https://cdn.jsdelivr.net/npm/animejs@3.0.1/lib/anime.min.js"></script>
+	</head>
+	<body onload="myFunction()" style="margin:0;">
+		<div id="loader"></div>
+	<div class="con">
+	<div class="header">Music Player</div>
+		<div class="songwrapper">
+
+	  <div class="song1wrapper Astronomia">
+				 <div class="cover1"></div>
+			 </div>
+			 
+	   <div class="song2wrapper Yalgaar">
+				 <div class="cover2"></div>
+			 </div>
+			 
+	   <div class="song3wrapper Believer">
+				 <div class="cover3"></div>
+			 </div>
+			 
+	   <div class="song4wrapper Legends">
+				 <div class="cover4"></div>
+			 </div>
+			 
+		<div class="song5wrapper Machyenge">
+				 <div class="cover5"></div>
+			 </div>
+			 
+		 <div class="song6wrapper Border">
+				 <div class="cover6"></div>
+			 </div>
+			 
+		 <div class="song7wrapper Ramayana">
+				 <div class="cover7"></div>
+			 </div>
+		</div>
+		
+		
+		
+		
+		
+	 <div class="title-wrapper">
+			 <h1>Legends Never Die</h1>		
+	 </div>	 
+	 
+	 <div class="controls-wrapper">		
+	 <svg width="19" height="22" xmlns="http://www.w3.org/2000/svg" class="backward-btn">		 <g fill="#A5A5A5" fill-rule="evenodd">		 <path d="M15.826 11.855L2.535 20.96a1 1 0 0 1-1.565-.826V1.927a1 1 0 0 1 1.565-.825l13.29 9.103a1 1 0 0 1 0 1.65z" opacity=".547"/>		 <rect opacity=".547" x="16" y="3" width="3" height="17" rx="1"/>		 </g>		</svg>		 
+	 
+	 <div class="play-btn-wrapper">			
+	 <i class="fa fa-play" ></i>  
+		 </div>		 
+	 
+	 <svg width="19" height="22" xmlns="http://www.w3.org/2000/svg" class="forward-btn">		 <g fill="#A5A5A5" fill-rule="evenodd">		 <path d="M15.826 11.855L2.535 20.96a1 1 0 0 1-1.565-.826V1.927a1 1 0 0 1 1.565-.825l13.29 9.103a1 1 0 0 1 0 1.65z" opacity=".547"/>		 <rect opacity=".547" x="16" y="3" width="3" height="17" rx="1"/>		 </g>	
+		 </svg>	
+	 </div>	 
+	 
+	 
+	 <div class="options-wrapper">		
+	 <div>		
+	  <i class="fa fa-undo"></i>
+	 </div>		
+	 <div>		
+	   <i class="fa fa-cog"></i>
+	 </div>
+	 
+		 </div>
+		<div class="setting">
+	<i class="fa fa-arrow-down"></i>
+	<input type="range" min="0" max="100" value="90" class="range" />
+	<div class="volume">Volume : 90%</div>
+		</div>
+		
+		</div>
+		
+	   
+		<script>
+let forwardBtn = document.querySelector('.forward-btn');	
+let backwardBtn = document.querySelector('.backward-btn');	
+let songTitle = document.querySelector('.title-wrapper h1');  
+  var a = true ;
+  var b = true ;
+ forwardBtn.addEventListener('click',() => {
+	if(a){
+  a = false;
+	nextSong();
+  setTimeout(()=>{
+	 a = true;   
+	},1250);  
+	}
+})
+ backwardBtn.addEventListener('click',() => {
+	if(b){
+  b = false;
+	prevSong();
+  setTimeout(()=>{
+	 b = true;   
+	},1250);  
+	}
+})
+
+let songArray = ['Astronomia', 'Yalgaar', 'Believer', 'Legends', 'Machyenge', 'Border' ,'Ramayana'];
+
+let machyenge = new Audio()
+machyenge.src = "https://www.dropbox.com/s/6vtttzs5dqgff8y/Firse%20Machayenge%20-%20Emiway%20Bantai.mp3?raw=1" ;
+
+let astronomia = new Audio()
+astronomia.src = "https://www.dropbox.com/s/u7ox1q182t21280/Astronomia%20African%20Coffin%20Dance%20320Kbps%28DJPubg.Com%29.mp3?raw=1" ;
+
+let yalgaar = new Audio()
+yalgaar.src = "https://www.dropbox.com/s/myyg1ryspd2s2y2/Yalgaar%20-%20Carryminati%20320%20Kbps.mp3?raw=1" ;
+
+let believer = new Audio()
+believer.src = "https://dl.dropbox.com/s/e5y42cc90ugx09t/Believer.mp3?dl=0" ;
+
+let legends = new Audio()
+legends.src= "https://dl.dropbox.com/s/5jyylqps64nyoez/Legends%20never%20die.mp3?dl=0" ;
+
+let ramayana = new Audio()
+ramayana.src = "https://www.dropbox.com/s/nvgfbvt7ots76fh/Uttar-Ramayan-title-song-Luv-Kush-singing-Hum-katha-Sunate-full-song-with-lyrics-UttarRamayan_SHjNq8czgXU.mp3?raw=1" ;
+
+let border = new Audio()
+border.src = "https://www.dropbox.com/s/yrq6u4vaue9clw9/Border-Sandese%20Aate%20Hain.mp3?raw=1" ;
+  let songNumber = 3;
+   /* songTitle.innerHTML = songArray[songNumber]; */
+
+  anime({	
+		targets: '.Legends',	
+		scale: [0.8, 1.1],		
+	easing: 'easeOutExpo',		
+	duration: 1500,	
+})
+
+
+  function nextSong() {		
+   if (songNumber == 6) {		
+			songNumber = 0;		
+			setSong(); 
+	  
+			anime({		
+			targets: '.songwrapper',				
+	  translateX: '765px',				
+	  easing: 'easeOutExpo',			
+	})		
+	} 
+	else {			
+	songNumber += 1;			
+	setSong();		
+		scaleCoverDownNext();	 
+	
+	   anime({		
+		   targets: '.songwrapper',				
+	  translateX: '-=255px',				
+	  easing: 'easeOutExpo',			
+	  })		
+		 }
+		}
+	
+	
+	function prevSong() {		
+   if (songNumber == 0) {		
+			
+	} 
+	else {	
+			
+	songNumber -= 1;			
+	setSong();		
+		scaleCoverDownPrev();	 
+	
+	   anime({		
+		   targets: '.songwrapper',				
+	  translateX: '+=255px',				
+	  easing: 'easeOutExpo',			
+	  })		
+		 }
+		}
+	
+	/* Ye thik karna hai */
+   function setSong() {	
+	  if(songArray[songNumber] == "Legends"){
+		  songTitle.innerHTML = "Legends Never Die"
+	  }
+	  else{
+		  songTitle.innerHTML = songArray[songNumber];
+	  }
+		 anime({	
+		 targets: `.${songArray[songNumber]}`,
+		scale: 1.1,			
+   easing: 'easeOutExpo',		
+	  duration: 1500,	
+	  })	
+  }
+	
+   function scaleCoverDownNext() {	
+	  let prevSongNumber = songNumber - 1;
+		  anime({		
+		targets: `.${songArray[prevSongNumber]}`,
+			 scale: 1,	
+		  easing: 'easeOutExpo',		
+	   duration: 1500,	
+	   })	
+   }
+   
+   function scaleCoverDownPrev() {		
+   let nextSongNumber = songNumber + 1;	 
+	  anime({		
+	  targets: `.${songArray[nextSongNumber]}`,	
+		 scale: 1,		
+	  easing: 'easeOutExpo',		
+	  duration: 1500,		
+  })
+  
+	  }
+  
+ 
+  
+  let perm = 0;
+  let playBtn = document.querySelector('.fa-play');
+  playBtn.addEventListener('click', () => {  
+  if(perm == 0)  {
+	  playBtn.classList.add('fa-pause');
+	  playBtn.classList.remove('fa-play');
+	  playsong();
+	  perm = 1
+  }
+	else{
+	  playBtn.classList.add('fa-play');
+	  playBtn.classList.remove('fa-pause');
+	  stopsong();
+	  perm = 0
+	}
+	 })
+
+function playsong(){	 
+	 if(songNumber == 0){
+		 astronomia.play()
+	 }   
+	 else if(songNumber == 1){
+		 yalgaar.play()
+	 }
+	 else if(songNumber == 2){
+		 believer.play()
+	 }
+	 else if(songNumber == 3){
+		 legends.play()
+	 }
+	 else if(songNumber == 4){
+		 machyenge.play()
+	 }
+	 else if(songNumber == 5){
+		 border.play()
+	 }
+	 else if(songNumber == 6){
+		 ramayana.play()
+	 }
+}
+function stopsong(){
+	astronomia.pause()
+	yalgaar.pause()
+	believer.pause()
+	machyenge.pause()
+	legends.pause()
+	ramayana.pause()
+	border.pause()
+}
+let setting = document.querySelector(".fa-cog");
+let dialog = document.querySelector(".setting")
+var close = document.querySelector(".setting i")
+setting.addEventListener('click',() => {
+	   dialog.style.display = "block" ;	
+})
+close.addEventListener('click' , () => {
+	dialog.style.display = "none"
+})
+let range = document.querySelector(".range");
+let rangeval = document.querySelector(".volume")
+range.addEventListener('input',() => {
+	var value = range.value ;
+	rangeval.innerHTML ="Volume :" + " " + value + "%" ;
+	
+	astronomia.volume = value/100 ;
+	yalgaar.volume = value/100 ;
+	believer.volume = value/100 ;
+	machyenge.volume = value/100 ;
+	legends.volume = value/100 ;
+	ramayana.volume = value/100
+	border.volume = value/100 ;
+})
+
+let restart = document.querySelector(".fa-undo");
+restart.addEventListener('click',() => {
+	var restartsong = songArray[songNumber]
+	
+	if(restartsong == "Astronomia"){
+		astronomia.currentTime = 0 ;
+	}
+	else if(restartsong == "Yalgaar"){
+		yalgaar.currentTime = 0 ;
+	}
+	else if(restartsong == "Believer"){
+		believer.currentTime = 0 ;
+	}
+	else if(restartsong == "Legends"){
+		legends.currentTime = 0 ;
+	}
+	else if(restartsong == "Machyenge"){
+		machyenge.currentTime = 0 ;
+	}
+	else if(restartsong == "Border"){
+		border.currentTime = 0 ;
+	}
+	else if(restartsong == "Ramayana"){
+		ramayana.currentTime = 0 ;
+	}
+
+})
+		</script>
+	</body>
+</html>
